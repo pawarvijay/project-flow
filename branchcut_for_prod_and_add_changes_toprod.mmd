@@ -1,0 +1,11 @@
+graph TD
+    T["Branch Cut for PROD"]
+    T -.-> A[Any Local changes]
+    A --> B[1st: Add to MAIN branch]
+    B --> C[Deploy to DEV enviro & do testing]
+    C --> D{Everything works fine?}
+    D -- Yes --> E[2nd: Cherry-pick to PROD_RELEASE branch]
+    E --> F[Deploy to STAGE]
+    F --> G[Done]
+    D -- No --> H[Fix locally and repeat]
+    H --> A
